@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>修改数据</title>
+</head>
+<body>
+<div style="margin-left: 50%">
+
+    <form th:action="@{/user/dataupdate}" th:object="${user}" action="update.html" method="post">
+              <input type="hidden" th:field="*{id}">
+        姓名：<input th:field="*{name}"><br>
+        性别：<input th:field="*{sex}"><br>
+        年龄：<input th:field="*{age}"><br>
+        地址：<input th:field="*{address}"><br>
+        学校： <input th:field="*{school}"><br>
+        <input type="submit" value="数据提交">
+
+    </form>
+
+</div>
+
+</body>
+</html>

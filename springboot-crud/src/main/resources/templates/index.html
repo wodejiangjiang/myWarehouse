@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>SpringBoot+dataJpa+thymeleaf项目实例</title>
+   <!-- <link href="style.css" rel="stylesheet">-->
+   <!-- <script src="hangge.js"></script>-->
+</head>
+<body>
+<center><h4><a th:href="@{/user/runsave}"  href="index.html">数据新增</a></h4>
+<div style="margin-top: 5%" th:if="${#lists.isEmpty(userlist)}">
+    暂无数据
+</div>
+
+
+<div style="margin-top: 5%"  th:if="not ${#lists.isEmpty(userlist)}">
+<table border="1">
+<tr align="center">
+<td>姓名</td>
+<td>性别</td>
+<td>年龄</td>
+<td>地址</td>
+<td>毕业学校</td>
+<td>操作</td>
+</tr>
+
+ <tr th:each="users:${userlist}">
+ <td th:text="${users.name}">姓名</td>
+ <td th:text="${users.sex}">性别</td>
+ <td th:text="${users.age}">年龄</td>
+ <td th:text="${users.address}">地址</td>
+ <td th:text="${users.school}">毕业学校</td>
+ <td><a href="index.html" th:href="@{/user/findById/{userId}(userId=${users.id})}">修改</a><a th:href="@{/user/delete(id=${users.id})}" href="index.html">删除</a></td>
+
+
+
+
+    <br>
+    <br>
+<!--    <a th:href="@{/user/index(pageSize=${users.pageSize})}" href="index.html">首页</a>-->
+
+   <!-- {/user/index?pageNo=${users.pageNo - 1 }&pageSize=${users.pageSize}}
+        @{/user/index?pageNo=${users.pageNo + 1 }&pageSize=${users.pageSize}}
+        @{/user/index?pageNo=${users.pageNum }&pageSize=${users.pageSize}}
+@{/user/delete(id=${users.id})}
+        "@{/user/index(pageNo=1,pageSize=${users.pageSize})}
+   -->
+
+    <!--<p th:if="${users.pageNo gt 1}">
+        <a th:href="@{/user/index(pageNo=${users.pageNo - 1} ,pageSize=${users.pageSize})}" href="index.html">上一页</a>
+   </p>
+
+    <p th:if="${users.pageNo lt users.pageNum}">
+        <a th:href="@{/user/index(pageNo=${users.pageNo + 1} ,pageSize=${users.pageSize})}"  href="index.html">上一页</a>
+    </p>
+
+    <a  th:href="@{/user/index(pageNo=${users.pageNum } ,pageSize=${users.pageSize})}"  href="index.html">末页</a>
+    当前页：<p th:text="${users.pageNo }"></p>
+    总页数：<p th:text=" ${users.pageNum }"></p>
+    总记录数：<p th:text=" ${users.count }"></p>
+ </tr>-->
+</table>
+</div>
+</center>
+</body>
+</html>

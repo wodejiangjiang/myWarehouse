@@ -1,0 +1,49 @@
+server:
+  port: 8080
+  tomcat:
+    uri-encoding: UTF-8
+spring:
+  servlet:
+    multipart:
+      enabled: true
+      max-file-size: 20MB
+      max-request-size: 20MB
+  datasource:
+    druid:
+      validation-query: select 1
+      max-active: 100
+      min-idle: 10
+      max-wait: 300000
+      test-while-idle: true
+      test-on-borrow: false
+      test-on-return: false
+      initial-size: 10
+      driver-class-name: com.mysql.jdbc.Driver
+      url: jdbc:mysql://localhost:3306/myhome?useUnicode=true&characterEncoding=utf-8
+      username: root
+      password: root
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+  thymeleaf:
+      cache: false
+logging:
+  file: log.log
+  level:
+    root: INFO
+  path: .
+  pattern:
+    console: "%date %level %thread %10logger %file %line %msg%n"
+    file: "%date %level %thread %10logger %file %line %msg%n"
+    level: "%5p"
+  register-shutdown-hook: false
+mybatis:
+  configuration:
+      cache-enabled: true
+      map-underscore-to-camel-case: true
+      use-generated-keys: true
+      use-column-label: true
+      log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+      type-aliases-package: com.jw.bean
+      mapper-locations: classpath:/mapper/*Mapper.xml
